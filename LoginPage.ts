@@ -51,14 +51,16 @@ export class LoginPage {
 
     }
 
-    async goandreview(reviewname: string, reviewemail: string, reviewsubject: string, reviewmessage:string ){
+    async goandreview(reviewname: string, reviewemail: string, reviewsubject: string, reviewmessage:string , adddoc:string, submitreview:string){
         await this.page.click(this.elements.contactus);
         await this.page.fill(this.elements.reviewname,"MonicaN");
         await this.page.fill(this.elements.reviewemail,"mmoni1141@gmail.com");
         await this.page.fill(this.elements.reviewsubject,"Review update");
         await this.page.fill(this.elements.reviewmessage,"web application is not stable please update the version");
+        const fileInputSelector = this.elements.adddoc; // Assuming this is the selector for the file input field
+        await this.page.setInputFiles(fileInputSelector, adddoc); // Provide the file path from the spec file
+        await this.page.click(this.elements.submitreview);
+
     }
-
-
 
 }
